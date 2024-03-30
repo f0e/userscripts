@@ -1,15 +1,18 @@
 // ==UserScript==
 // @name        RateYourMusic+
-// @namespace   Violentmonkey Scripts
+// @description adds functionality to RateYourMusic
+// @author      f0e
+// @version     1.0
+// @namespace   https://github.com/f0e
 // @match       *://rateyourmusic.com/release/*
 // @match       *://rateyourmusic.com/artist/*
 // @match       *://rateyourmusic.com/charts/*
 // @grant       GM.getValue
 // @grant       GM.setValue
 // @grant       GM.addStyle
-// @version     1.0
-// @author      tek
-// @description
+// @updateURL   https://github.com/f0e/userscripts/raw/main/rateyourmusic+.user.js
+// @downloadURL https://github.com/f0e/userscripts/raw/main/rateyourmusic+.user.js
+// @supportURL  https://github.com/f0e/userscripts/issues
 // ==/UserScript==
 
 /*

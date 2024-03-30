@@ -1,9 +1,15 @@
 // ==UserScript==
-// @name         random steam group
-// @author       tek
-// @match        *://steamcommunity.com/groups/*
-// @match        *://steamcommunity.com/gid/*
-// @run-at       document-idle
+// @name        Random steam group
+// @description takes you to a random steam group
+// @author      f0e
+// @version     1.0
+// @namespace   https://github.com/f0e
+// @match       *://steamcommunity.com/groups/*
+// @match       *://steamcommunity.com/gid/*
+// @run-at      document-idle
+// @updateURL   https://github.com/f0e/userscripts/raw/main/random-steam-group.user.js
+// @downloadURL https://github.com/f0e/userscripts/raw/main/random-steam-group.user.js
+// @supportURL  https://github.com/f0e/userscripts/issues
 // ==/UserScript==
 
 (function () {

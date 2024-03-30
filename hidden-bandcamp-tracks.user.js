@@ -1,11 +1,14 @@
 // ==UserScript==
 // @name        Display hidden bandcamp tracks
-// @namespace   Violentmonkey Scripts
+// @description ported from https://github.com/7x11x13/hidden-bandcamp-tracks
+// @author      f0e
+// @version     1.0
+// @namespace   https://github.com/f0e
 // @match       *://*.bandcamp.com/album/*
 // @grant       none
-// @version     1.0
-// @author      tek
-// @description ported from https://github.com/7x11x13/hidden-bandcamp-tracks
+// @updateURL   https://github.com/f0e/userscripts/raw/main/hidden-bandcamp-tracks.user.js
+// @downloadURL https://github.com/f0e/userscripts/raw/main/hidden-bandcamp-tracks.user.js
+// @supportURL  https://github.com/f0e/userscripts/issues
 // ==/UserScript==
 
 const num_tracks_regex = /(\d+) track album/;

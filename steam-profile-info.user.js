@@ -1,9 +1,15 @@
 // ==UserScript==
-// @name      steam profile info
-// @author    tek
-// @match     *://steamcommunity.com/*/*
-// @grant     GM_addStyle
-// @run-at    document-idle
+// @name        Steam Profile Info
+// @description adds info to steam profiles
+// @author      f0e
+// @version     1.0
+// @namespace   https://github.com/f0e
+// @match       *://steamcommunity.com/*/*
+// @grant       GM_addStyle
+// @run-at      document-idle
+// @updateURL   https://github.com/f0e/userscripts/raw/main/steam-profile-info.user.js
+// @downloadURL https://github.com/f0e/userscripts/raw/main/steam-profile-info.user.js
+// @supportURL  https://github.com/f0e/userscripts/issues
 // ==/UserScript==
 
 GM_addStyle(`

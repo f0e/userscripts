@@ -1,11 +1,17 @@
 // ==UserScript==
-// @name         profile picture date
-// @author       tek
-// @match        *://twitter.com/*
-// @match        *://steamcommunity.com/*/*
-// @match        *://*.instagram.com/*
-// @grant        GM.xmlHttpRequest
-// @run-at       document-idle
+// @name        Profile picture dates
+// @description shows the date that profile pictures were uploaded on certain sites
+// @author      f0e
+// @version     1.0
+// @namespace   https://github.com/f0e
+// @match       *://twitter.com/*
+// @match       *://steamcommunity.com/*/*
+// @match       *://*.instagram.com/*
+// @run-at      document-idle
+// @grant       GM.xmlHttpRequest
+// @updateURL   https://github.com/f0e/userscripts/raw/main/profile-picture-dates.user.js
+// @downloadURL https://github.com/f0e/userscripts/raw/main/profile-picture-dates.user.js
+// @supportURL  https://github.com/f0e/userscripts/issues
 // ==/UserScript==
 
 function get_last_modified(url) {

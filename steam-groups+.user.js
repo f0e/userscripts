@@ -1,12 +1,15 @@
 // ==UserScript==
-// @name         steam groups+
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  dopee
-// @author       tek
-// @match        *://steamcommunity.com/*/*/groups*
-// @grant        none
-// @run-at       document-idle
+// @name        Steam Groups+
+// @description adds more useful group info to profile group lists
+// @author      f0e
+// @version     1.0
+// @namespace   https://github.com/f0e
+// @match       *://steamcommunity.com/*/*/groups*
+// @grant       none
+// @run-at      document-idle
+// @updateURL   https://github.com/f0e/userscripts/raw/main/steam-groups+.user.js
+// @downloadURL https://github.com/f0e/userscripts/raw/main/steam-groups+.user.js
+// @supportURL  https://github.com/f0e/userscripts/issues
 // ==/UserScript==
 
 (function () {
