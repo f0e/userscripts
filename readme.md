@@ -1,18 +1,22 @@
 # userscripts
 
-### [display hidden bandcamp tracks](./display%20hidden%20bandcamp%20tracks.user.js)
+My userscripts. I currently use [Violentmonkey](https://violentmonkey.github.io/), so other userscript managers might have issues.
+
+To install a script, click on its header.
+
+### [display hidden bandcamp tracks](https://github.com/f0e/userscripts/raw/main/display hidden bandcamp tracks.user.js)
 
 Ported from [https://github.com/7x11x13/hidden-bandcamp-tracks](7x11x13's hidden bandcamp tracks extension), all credit to them.
 
-### [profile picture dates](./profile%20picture%20dates.user.js)
+### [profile picture dates](https://github.com/f0e/userscripts/raw/main/profile picture dates.user.js)
 
 Adds dates to profile pictures on certain websites which retain accurate `last-modified` headers. Lets you know when users uploaded their profile picture.
 
-### [random steam group](./random%20steam%20group.user.js)
+### [random steam group](https://github.com/f0e/userscripts/raw/main/random steam group.user.js)
 
 Adds a button onto steam groups which takes you to another random steam group.
 
-### [RateYourMusic+](./RateYourMusic+.user.js)
+### [RateYourMusic+](https://github.com/f0e/userscripts/raw/main/RateYourMusic+.user.js)
 
 Adds additional functionality to RateYourMusic.
 
@@ -24,10 +28,10 @@ It also caches track ratings for every release page you view (only used to avoid
 
 Please do not abuse this feature, you will most likely be banned from the site. Sonemic does not like scraping.
 
-### [steam groups+](./steam%20groups+.user.js)
+### [steam groups+](https://github.com/f0e/userscripts/raw/main/steam groups+.user.js)
 
 Adds the group clantag, creation date and if the current account is the owner on the /groups page of any Steam profile.
 
-### [steam profile info](./steam%20profile%20info.user.js)
+### [steam profile info](https://github.com/f0e/userscripts/raw/main/steam profile info.user.js)
 
 Adds text on Steam user profiles displaying the date of their last username change, and adds an alert if they're shadow trade banned.
