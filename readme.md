@@ -4,7 +4,7 @@ My userscripts. I currently use [Violentmonkey](https://violentmonkey.github.io/
 
 To install a script, click on its header.
 
-### [display hidden bandcamp tracks](https://github.com/f0e/userscripts/raw/main/display-hidden-bandcamp-tracks.user.js)
+### [display hidden bandcamp tracks](https://github.com/f0e/userscripts/raw/main/hidden-bandcamp-tracks.user.js)
 
 Ported from [7x11x13's hidden bandcamp tracks extension](https://github.com/7x11x13/hidden-bandcamp-tracks), all credit goes to them.
 
@@ -16,7 +16,7 @@ Adds dates to profile pictures on certain websites which retain accurate `last-m
 
 Adds a button onto steam groups which takes you to another random steam group.
 
-### [RateYourMusic+](https://github.com/f0e/userscripts/raw/main/RateYourMusic+.user.js)
+### [RateYourMusic+](https://github.com/f0e/userscripts/raw/main/rateyourmusic+.user.js)
 
 Adds additional functionality to RateYourMusic.
 
