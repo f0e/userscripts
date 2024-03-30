@@ -10,11 +10,11 @@
 // ==/UserScript==
 
 (function () {
-  'use strict';
+  "use strict";
 
   const parent = document.querySelector("#player-matches");
   const div = document.createElement("div");
-  parent.insertAdjacentElement('afterbegin', div);
+  parent.insertAdjacentElement("afterbegin", div);
 
   const button = document.createElement("button");
   button.innerHTML = "get aliases";
@@ -30,31 +30,43 @@
     const htmlString = await res.text();
 
     const parser = new DOMParser();
-    const matchDoc = parser.parseFromString(htmlString, 'text/html');
+    const matchDoc = parser.parseFromString(htmlString, "text/html");
 
     const playerURL = location.href.split("#/matches")[0];
-    const playerInfo = matchDoc.querySelector(`.player-link[href="${playerURL}"]`);
+    const playerInfo = matchDoc.querySelector(
+      `.player-link[href="${playerURL}"]`
+    );
 
     const name = playerInfo.textContent.trim();
-    const avatar = playerInfo.parentNode.querySelector('img:last-of-type').getAttribute('src');
+    const avatar = playerInfo.parentNode
+      .querySelector("img:last-of-type")
+      .getAttribute("src");
 
     return { name, avatar, stats };
   }
 
   function generateHistoryHTML(history) {
     return `
-      <div>names: <span style="color: rgba(255, 255, 255, 0.5)">${history.names.map((name) => `<span style="color: rgba(255, 255, 255, 1)">${name}</span>`).join(", ")}</span></div>
-      <div>avatars: <div>${history.avatars.map((avatar) => `<img style="width: 50px; height: 50px" src="${avatar}"/>`)}</div></div>
+      <div>names: <span style="color: rgba(255, 255, 255, 0.5)">${history.names
+        .map(
+          (name) => `<span style="color: rgba(255, 255, 255, 1)">${name}</span>`
+        )
+        .join(", ")}</span></div>
+      <div>avatars: <div>${history.avatars.map(
+        (avatar) => `<img style="width: 50px; height: 50px" src="${avatar}"/>`
+      )}</div></div>
     `;
   }
 
   async function getHistory() {
-    const links = Array.from(document.querySelectorAll(".match-list-link")).map((link) => link.getAttribute("href"));
+    const links = Array.from(document.querySelectorAll(".match-list-link")).map(
+      (link) => link.getAttribute("href")
+    );
 
     const history = {
       names: [],
-      avatars: []
-    }
+      avatars: [],
+    };
 
     for (const [i, link] of links.entries()) {
       const info = await scrapeMatch(link);
@@ -69,8 +81,9 @@
         history.avatars.push(info.avatar);
       }
 
-      results.innerHTML = `
-<div>loading... ${i+1}/${links.length}</div>
+      results.innerHTML =
+        `
+<div>loading... ${i + 1}/${links.length}</div>
 ` + generateHistoryHTML(history);
     }
 

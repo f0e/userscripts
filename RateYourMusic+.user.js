@@ -39,8 +39,8 @@ const log = (...args) => console.log(`[${KEY}]`, ...args);
 
 const parseHtml = (htmlString) => {
   const parser = new DOMParser();
-  return parser.parseFromString(htmlString, 'text/html');
-}
+  return parser.parseFromString(htmlString, "text/html");
+};
 
 async function fetchPage(url) {
   const res = await fetch(url);
@@ -52,7 +52,9 @@ async function fetchPage(url) {
 }
 
 function getTrackRatings(html) {
-  const trackElems = html.querySelectorAll("#tracks.tracks.tracklisting > .track");
+  const trackElems = html.querySelectorAll(
+    "#tracks.tracks.tracklisting > .track"
+  );
 
   let anyRatings = false;
 
@@ -61,12 +63,16 @@ function getTrackRatings(html) {
     .map((e) => {
       // basic info (everything has this)
       const obj = {
-        title: e.querySelector(".tracklist_title .rendered_text").innerText.trim(),
+        title: e
+          .querySelector(".tracklist_title .rendered_text")
+          .innerText.trim(),
         tracknum: e.querySelector(".tracklist_num").innerText.trim(),
       };
 
       // track duration
-      const length = e.querySelector(".tracklist_title .tracklist_duration").innerText.trim();
+      const length = e
+        .querySelector(".tracklist_title .tracklist_duration")
+        .innerText.trim();
       if (length) {
         obj["length"] = length;
       }
@@ -82,7 +88,9 @@ function getTrackRatings(html) {
         const detailedRating = ratingNumElem.getAttribute("data-tiptip");
 
         obj["rating"] = parseFloat(detailedRating.split(" from ")[0]);
-        obj["ratingCount"] = parseInt(detailedRating.split(" from ")[1].split(" ratings")[0]);
+        obj["ratingCount"] = parseInt(
+          detailedRating.split(" from ")[1].split(" ratings")[0]
+        );
       }
 
       return obj;
@@ -92,7 +100,11 @@ function getTrackRatings(html) {
 }
 
 async function parsePage(html) {
-  const releaseId = html.querySelector(".album_shortcut").getAttribute("value").split("[Album")[1].split("]")[0];
+  const releaseId = html
+    .querySelector(".album_shortcut")
+    .getAttribute("value")
+    .split("[Album")[1]
+    .split("]")[0];
 
   if (!(releaseId in data)) {
     // init
@@ -102,12 +114,14 @@ async function parsePage(html) {
       trackRatings: {
         ratings: null,
         timestamp: null,
-        history: []
-      }
-    }
+        history: [],
+      },
+    };
   }
 
-  data[releaseId].title = html.querySelector(".album_title").childNodes[0].textContent.trim();
+  data[releaseId].title = html
+    .querySelector(".album_title")
+    .childNodes[0].textContent.trim();
   data[releaseId].artist = html.querySelector(".artist").innerText.trim();
 
   const { anyRatings, ratings } = getTrackRatings(html);
@@ -120,7 +134,7 @@ async function parsePage(html) {
       if (JSON.stringify(ratings) != JSON.stringify(dataRatings.ratings)) {
         dataRatings.history.push({
           ratings: dataRatings.ratings,
-          timestamp: dataRatings.timestamp
+          timestamp: dataRatings.timestamp,
         });
       }
     }
@@ -151,7 +165,9 @@ function getBestTracks(releaseRatings) {
     for (const trackRating of data.trackRatings.ratings) {
       trackRating.artistTitle = data.artist;
       trackRating.releaseTitle = data.title;
-      trackRating.weightedRating = (W*R + trackRating.ratingCount*trackRating.rating) / (W + trackRating.ratingCount);
+      trackRating.weightedRating =
+        (W * R + trackRating.ratingCount * trackRating.rating) /
+        (W + trackRating.ratingCount);
       bestTracks.push(trackRating);
     }
   }
@@ -167,11 +183,15 @@ async function getRatings(releasesSections) {
 
     for (const release of releases) {
       const releaseId = release.id.split("release_")[1];
-      const releaseTitle = release.querySelector(".disco_info .album").innerText.trim();
+      const releaseTitle = release
+        .querySelector(".disco_info .album")
+        .innerText.trim();
 
       if (!(releaseId in data)) {
         // ratings don't already exist, fetch them
-        console.log(`fetching track ratings for ${releaseTitle} (${releaseId})`);
+        console.log(
+          `fetching track ratings for ${releaseTitle} (${releaseId})`
+        );
 
         const url = release.querySelector(".disco_info a").href;
         console.log(url);
@@ -180,8 +200,7 @@ async function getRatings(releasesSections) {
         await parsePage(pageHtml);
       }
 
-      if (!data[releaseId].trackRatings.ratings)
-        continue; // no ratings available
+      if (!data[releaseId].trackRatings.ratings) continue; // no ratings available
 
       releaseRatings[releaseId] = data[releaseId];
     }
@@ -189,27 +208,40 @@ async function getRatings(releasesSections) {
 
   const bestTracks = getBestTracks(releaseRatings);
 
-  bestTracks.sort((a, b) =>
-                  (b.bolded - a.bolded) ||
-                  (b.weightedRating - a.weightedRating) ||
-                  (b.ratingCount - a.ratingCount));
+  bestTracks.sort(
+    (a, b) =>
+      b.bolded - a.bolded ||
+      b.weightedRating - a.weightedRating ||
+      b.ratingCount - a.ratingCount
+  );
 
-  console.log(bestTracks
-              .map((track, i) => `#${i+1} ${track.artistTitle} - ${track.title} (${track.releaseTitle}) - ${track.rating}${track.bolded ? " (bolded)": ""} with ${track.ratingCount} ratings (${track.weightedRating.toFixed(2)})`)
-              .reverse()
-              .join("\n"));
+  console.log(
+    bestTracks
+      .map(
+        (track, i) =>
+          `#${i + 1} ${track.artistTitle} - ${track.title} (${
+            track.releaseTitle
+          }) - ${track.rating}${track.bolded ? " (bolded)" : ""} with ${
+            track.ratingCount
+          } ratings (${track.weightedRating.toFixed(2)})`
+      )
+      .reverse()
+      .join("\n")
+  );
 }
 
 function createArtistButtons() {
   const headerElems = document.querySelectorAll(".disco_header_top");
-  const releasesElems = document.querySelectorAll(".disco_header_top ~ div[id^='disco_type_']");
+  const releasesElems = document.querySelectorAll(
+    ".disco_header_top ~ div[id^='disco_type_']"
+  );
 
   const sections = [];
   for (const [i, headerElem] of headerElems.entries()) {
     sections.push({
       header: headerElem,
-      releases: releasesElems[i]
-    })
+      releases: releasesElems[i],
+    });
   }
 
   console.log(sections);
@@ -220,7 +252,9 @@ function createArtistButtons() {
 
     const getBestTracksButton = document.createElement("a");
     getBestTracksButton.classList = "btn flat_btn best_track_btn";
-    getBestTracksButton.addEventListener("click", (e) => getRatings([section.releases]));
+    getBestTracksButton.addEventListener("click", (e) =>
+      getRatings([section.releases])
+    );
     getBestTracksButton.innerText = "Get best tracks";
 
     section.header.appendChild(getBestTracksButton);
@@ -228,8 +262,11 @@ function createArtistButtons() {
 
   const wantedSectionIds = ["s", "m", "e", "c", "b"];
   const wantedSections = sections
-    .filter((section) => wantedSectionIds
-      .some((id) => section.releases.id.includes(`disco_type_${id}`)))
+    .filter((section) =>
+      wantedSectionIds.some((id) =>
+        section.releases.id.includes(`disco_type_${id}`)
+      )
+    )
     .map((section) => section.releases);
 
   console.log(wantedSections);
@@ -237,7 +274,7 @@ function createArtistButtons() {
   const getAllBestTracksButton = document.createElement("a");
   getAllBestTracksButton.classList = "btn flat_btn best_track_btn";
   getAllBestTracksButton.addEventListener("click", (e) => {
-    getRatings(wantedSections)
+    getRatings(wantedSections);
   });
   getAllBestTracksButton.innerText = "Get all best tracks";
 
@@ -245,42 +282,58 @@ function createArtistButtons() {
 }
 
 async function getChartsRatings() {
-  const releases = document.body.querySelectorAll(".page_section_charts_item_wrapper > .object_release");
+  const releases = document.body.querySelectorAll(
+    ".page_section_charts_item_wrapper > .object_release"
+  );
 
   const releaseRatings = {};
 
   for (const release of releases) {
     const releaseId = release.id.split("item_")[1];
-    const releaseTitle = release.querySelector(".page_charts_section_charts_item_title").innerText.trim();
+    const releaseTitle = release
+      .querySelector(".page_charts_section_charts_item_title")
+      .innerText.trim();
 
     if (!(releaseId in data)) {
       // ratings don't already exist, fetch them
       console.log(`fetching track ratings for ${releaseTitle} (${releaseId})`);
 
-      const url = release.querySelector(".page_charts_section_charts_item_link.release").href;
+      const url = release.querySelector(
+        ".page_charts_section_charts_item_link.release"
+      ).href;
       console.log(url);
 
       const pageHtml = await fetchPage(url);
       await parsePage(pageHtml);
     }
 
-    if (!data[releaseId].trackRatings.ratings)
-      continue; // no ratings available
+    if (!data[releaseId].trackRatings.ratings) continue; // no ratings available
 
     releaseRatings[releaseId] = data[releaseId];
   }
 
   const bestTracks = getBestTracks(releaseRatings);
 
-  bestTracks.sort((a, b) =>
-                  (b.bolded - a.bolded) ||
-                  (b.weightedRating - a.weightedRating) ||
-                  (b.ratingCount - a.ratingCount));
+  bestTracks.sort(
+    (a, b) =>
+      b.bolded - a.bolded ||
+      b.weightedRating - a.weightedRating ||
+      b.ratingCount - a.ratingCount
+  );
 
-  console.log(bestTracks
-              .map((track, i) => `#${i+1} ${track.artistTitle} - ${track.title} (${track.releaseTitle}) - ${track.rating}${track.bolded ? " (bolded)": ""} with ${track.ratingCount} ratings (${track.weightedRating.toFixed(2)})`)
-              .reverse()
-              .join("\n"));
+  console.log(
+    bestTracks
+      .map(
+        (track, i) =>
+          `#${i + 1} ${track.artistTitle} - ${track.title} (${
+            track.releaseTitle
+          }) - ${track.rating}${track.bolded ? " (bolded)" : ""} with ${
+            track.ratingCount
+          } ratings (${track.weightedRating.toFixed(2)})`
+      )
+      .reverse()
+      .join("\n")
+  );
 }
 
 function createChartsButtons() {
@@ -291,11 +344,13 @@ function createChartsButtons() {
   });
   getAllBestTracksButton.innerText = "Get best tracks";
 
-  document.querySelector(".page_charts_section_charts_header_chart_name_criteria").appendChild(getAllBestTracksButton);
+  document
+    .querySelector(".page_charts_section_charts_header_chart_name_criteria")
+    .appendChild(getAllBestTracksButton);
 }
 
 async function main() {
-  data = await GM.getValue(KEY) || {};
+  data = (await GM.getValue(KEY)) || {};
 
   if (location.href.includes("rateyourmusic.com/release/")) {
     log("release page");

@@ -14,12 +14,16 @@ async function run() {
     originalHeight: null,
     originalFramerate: null,
     dateAdded: null,
-    archived: false
+    archived: false,
   };
 
-  const message = document.querySelector('.video-container__message');
+  const message = document.querySelector(".video-container__message");
 
-  if (message && message.innerText == 'This video has been archived and is not available to watch at this time.') {
+  if (
+    message &&
+    message.innerText ==
+      "This video has been archived and is not available to watch at this time."
+  ) {
     // Cap
     const id = window.location.href.split("/").at(-1);
 
@@ -30,7 +34,8 @@ async function run() {
     message.outerHTML = "";
 
     const videoContainer = document.querySelector(".video-container");
-    videoContainer.innerHTML = `<video src=${videoUrl} controls></video>` + videoContainer.innerHTML;
+    videoContainer.innerHTML =
+      `<video src=${videoUrl} controls></video>` + videoContainer.innerHTML;
 
     videoInfo.originalWidth = json.files.original.width;
     videoInfo.originalHeight = json.files.original.height;
@@ -45,8 +50,8 @@ async function run() {
     videoInfo.dateAdded = videoObject.date_added;
   }
 
-  let parent = document.querySelector('.below-video__video-details');
-  parent.style.display = 'block';
+  let parent = document.querySelector(".below-video__video-details");
+  parent.style.display = "block";
   parent.style.textAlign = "left";
 
   const fileInfo = document.createElement("div");
@@ -60,21 +65,26 @@ async function run() {
   }
 
   if (videoInfo.dateAdded) {
-    const dateStr = new Date(videoInfo.dateAdded * 1000).toLocaleString('en-au', {
-      weekday: 'long',
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric',
-    });
+    const dateStr = new Date(videoInfo.dateAdded * 1000).toLocaleString(
+      "en-au",
+      {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      }
+    );
 
-    infoElems.push(`upload date: ${dateStr}`)
+    infoElems.push(`upload date: ${dateStr}`);
   }
 
   if (videoInfo.originalName)
     infoElems.push(`original name: ${videoInfo.originalName}`);
 
   if (videoInfo.originalWidth && videoInfo.originalHeight)
-    infoElems.push(`original size: ${videoInfo.originalWidth}x${videoInfo.originalHeight}`);
+    infoElems.push(
+      `original size: ${videoInfo.originalWidth}x${videoInfo.originalHeight}`
+    );
 
   if (videoInfo.originalFramerate)
     infoElems.push(`original fps: ${videoInfo.originalFramerate.toFixed(2)}`);
