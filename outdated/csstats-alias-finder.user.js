@@ -1,12 +1,15 @@
 // ==UserScript==
-// @name        csgostats.gg alias finder
-// @namespace   Violentmonkey Scripts
+// @name        csstats.gg alias finder
+// @description Reveal past usernames and profile pictures by parsing match history
+// @author      f0e
+// @version     1.0
+// @namespace   https://github.com/f0e
 // @match       *://csgostats.gg/player/*#/matches
 // @grant       GM.xmlHttpRequest
-// @version     1.0
-// @author      tek
-// @description hi
 // @run-at      document-idle
+// @updateURL   https://github.com/f0e/userscripts/raw/main/csstats-alias-finder.user.js
+// @downloadURL https://github.com/f0e/userscripts/raw/main/csstats-alias-finder.user.js
+// @supportURL  https://github.com/f0e/userscripts/issues
 // ==/UserScript==
 
 (function () {

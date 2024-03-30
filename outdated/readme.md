@@ -4,21 +4,21 @@ Userscripts that don't work currently.
 
 ## Currently broken but can be fixed, need updating
 
-### [streamable info](./streamable%20info.user.js)
+### [streamable info](https://github.com/f0e/userscripts/raw/main/streamable-info.user.js)
 
-Added text under Streamable videos displaying information about the video: original framerate, original filename, original size and exact upload date.
+Adds text under Streamable videos displaying hidden information about the uploaded video: original framerate, original filename, original size and exact upload date.
 
 Currently broken as they updated their site.
 
-### [csgostats.gg alias finder](./csgostats.gg%20alias%20finder.user.js)
+### [csstats alias finder](https://github.com/f0e/userscripts/raw/main/csstats-alias-finder.user.js)
 
-Added a button that would parse through a player's matches on [csgostats.gg, now csstats.gg](https://csstats.gg/). This would reveal past usernames and profile pictures.
+Adds a button that would parse through a player's matches on [csgostats.gg, now csstats.gg](https://csstats.gg/). This would reveal past usernames and profile pictures.
 
 Currently broken as they updated their site
 
 ## Permanently broken (RIP)
 
-### [youtube exploits](./youtube%20exploits.user.js)
+### [youtube exploits](https://github.com/f0e/userscripts/raw/main/youtube-exploits.user.js)
 
 Added buttons onto every YouTube channel which took you to that channel's Google 'Album Archive' page, giving you access to view their previous profile pictures, as well as any extra public images they had in their Google account.
 

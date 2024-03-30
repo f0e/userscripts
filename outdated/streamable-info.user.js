@@ -1,8 +1,14 @@
 // ==UserScript==
-// @name         streamable info
-// @author       tek
-// @match        *://*.streamable.com/*
-// @run-at       document-idle
+// @name        Streamable info
+// @description Displays hidden file metadata under Streamable videos
+// @author      f0e
+// @version     1.0
+// @namespace   https://github.com/f0e
+// @match       *://*.streamable.com/*
+// @run-at      document-idle
+// @updateURL   https://github.com/f0e/userscripts/raw/main/streamable-info.user.js
+// @downloadURL https://github.com/f0e/userscripts/raw/main/streamable-info.user.js
+// @supportURL  https://github.com/f0e/userscripts/issues
 // ==/UserScript==
 
 async function run() {
