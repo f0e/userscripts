@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name        csstats.gg alias finder
+// @name        csstats alias finder
 // @description Reveal past usernames and profile pictures by parsing match history
 // @author      f0e
-// @version     1.0
+// @version     1.01
 // @namespace   https://github.com/f0e
 // @match       *://csgostats.gg/player/*#/matches
 // @grant       GM.xmlHttpRequest

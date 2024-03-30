@@ -4,15 +4,15 @@ My userscripts. I currently use [Violentmonkey](https://violentmonkey.github.io/
 
 To install a script, click on its header.
 
-### [display hidden bandcamp tracks](https://github.com/f0e/userscripts/raw/main/hidden-bandcamp-tracks.user.js)
+### [Display hidden bandcamp tracks](https://github.com/f0e/userscripts/raw/main/hidden-bandcamp-tracks.user.js)
 
 Ported from [7x11x13's hidden bandcamp tracks extension](https://github.com/7x11x13/hidden-bandcamp-tracks), all credit goes to them.
 
-### [profile picture dates](https://github.com/f0e/userscripts/raw/main/profile-picture-dates.user.js)
+### [Profile picture dates](https://github.com/f0e/userscripts/raw/main/profile-picture-dates.user.js)
 
 Adds dates to profile pictures on certain websites which retain accurate `last-modified` headers. Lets you know when users uploaded their profile picture.
 
-### [random steam group](https://github.com/f0e/userscripts/raw/main/random-steam-group.user.js)
+### [Random steam group](https://github.com/f0e/userscripts/raw/main/random-steam-group.user.js)
 
 Adds a button onto steam groups which takes you to another random steam group.
 
@@ -28,10 +28,10 @@ It also caches track ratings for every release page you view (only used to avoid
 
 Please do not abuse this feature, you will most likely be banned from the site. Sonemic does not like scraping.
 
-### [steam groups+](https://github.com/f0e/userscripts/raw/main/steam-groups+.user.js)
+### [Steam Groups+](https://github.com/f0e/userscripts/raw/main/steam-groups+.user.js)
 
 Adds the group clantag, creation date and if the current account is the owner on the /groups page of any Steam profile.
 
-### [steam profile info](https://github.com/f0e/userscripts/raw/main/steam-profile-info.user.js)
+### [Steam Profile Info](https://github.com/f0e/userscripts/raw/main/steam-profile-info.user.js)
 
 Adds text on Steam user profiles displaying the date of their last username change, and adds an alert if they're shadow trade banned.
