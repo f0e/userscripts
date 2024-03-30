@@ -2,7 +2,7 @@
 // @name        RateYourMusic+
 // @description adds functionality to RateYourMusic
 // @author      f0e
-// @version     1.0
+// @version     1.01
 // @namespace   https://github.com/f0e
 // @match       *://rateyourmusic.com/release/*
 // @match       *://rateyourmusic.com/artist/*
@@ -166,6 +166,8 @@ function getBestTracks(releaseRatings) {
 
   for (const [id, data] of Object.entries(releaseRatings)) {
     for (const trackRating of data.trackRatings.ratings) {
+      if (!("ratingCount" in trackRating && "rating" in trackRating)) continue;
+
       trackRating.artistTitle = data.artist;
       trackRating.releaseTitle = data.title;
       trackRating.weightedRating =
