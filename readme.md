@@ -6,7 +6,7 @@ To install a script, click on its header.
 
 ### [display hidden bandcamp tracks](https://github.com/f0e/userscripts/raw/main/display-hidden-bandcamp-tracks.user.js)
 
-Ported from [https://github.com/7x11x13/hidden-bandcamp-tracks](7x11x13's hidden bandcamp tracks extension), all credit to them.
+Ported from [7x11x13's hidden bandcamp tracks extension](https://github.com/7x11x13/hidden-bandcamp-tracks), all credit to them.
 
 ### [profile picture dates](https://github.com/f0e/userscripts/raw/main/profile-picture-dates.user.js)
 
