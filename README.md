@@ -22,7 +22,7 @@ Adds a button onto steam groups which takes you to another random steam group.
 
 ### [Steam Groups+](https://github.com/f0e/userscripts/raw/main/steam-groups+.user.js)
 
-Adds the group clantag, creation date and if the current account is the owner on the /groups page of any Steam profile.
+Adds text to each group on a Steam user's groups list page showing the clan tag, creation date, and whether the current account is the group owner.
 
 ### [Steam Profile Info](https://github.com/f0e/userscripts/raw/main/steam-profile-info.user.js)
 
